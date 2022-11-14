@@ -40,6 +40,9 @@ require("nvim-tree").setup({
   sort_by = "case_sensitive",
   hijack_cursor = true,
   open_on_tab = true,
+  git = {
+    ignore = false,
+  },
   update_focused_file = {
     enable = true,
   },
@@ -56,6 +59,9 @@ require("nvim-tree").setup({
   },
   renderer = {
     group_empty = true,
+  },
+  filters = {
+    dotfiles = false,
   },
 })
 
@@ -74,6 +80,7 @@ local on_attach = function(client)
   vim.keymap.set("n", "gW", vim.lsp.buf.workspace_symbol, keymap_opts)
   vim.keymap.set("n", "gd", vim.lsp.buf.definition, keymap_opts)
   vim.keymap.set("n", "rn", vim.lsp.buf.rename, keymap_opts)
+  vim.keymap.set("n", "ga", vim.lsp.buf.code_action, keymap_opts)
   vim.keymap.set('n', '<space>f', function() vim.lsp.buf.format { async = true } end, bufopts)
 end
 
