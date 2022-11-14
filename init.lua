@@ -24,7 +24,7 @@ vim.keymap.set('i', 'AA', '<Esc>A')
 vim.keymap.set('i', 'II', '<Esc>I')
 
 local builtin = require('telescope.builtin')
-vim.keymap.set('n', '<leader>f', builtin.find_files, {})
+vim.keymap.set('n', '<leader>ff', builtin.find_files, {})
 vim.keymap.set('n', '<leader>fg', builtin.live_grep, {})
 vim.keymap.set('n', '<leader>fb', builtin.buffers, {})
 vim.keymap.set('n', '<leader>fh', builtin.help_tags, {})
@@ -73,7 +73,8 @@ local on_attach = function(client)
   vim.keymap.set("n", "g0", vim.lsp.buf.document_symbol, keymap_opts)
   vim.keymap.set("n", "gW", vim.lsp.buf.workspace_symbol, keymap_opts)
   vim.keymap.set("n", "gd", vim.lsp.buf.definition, keymap_opts)
-
+  vim.keymap.set("n", "rn", vim.lsp.buf.rename, keymap_opts)
+  vim.keymap.set('n', '<space>f', function() vim.lsp.buf.format { async = true } end, bufopts)
 end
 
 nvim_lsp.rust_analyzer.setup({
