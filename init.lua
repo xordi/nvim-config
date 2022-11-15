@@ -4,7 +4,8 @@ vim.g.loaded_netrwPlugin = 1
 
 require('plugins')
 
-vim.cmd[[colorscheme jellybeans]]
+vim.opt.termguicolors = true
+vim.cmd[[colorscheme melange]]
 
 vim.o.completeopt = 'menuone,noinsert,noselect'
 vim.opt.shortmess = vim.opt.shortmess + 'c'
@@ -82,37 +83,74 @@ local on_attach = function(client)
   vim.keymap.set("n", "rn", vim.lsp.buf.rename, keymap_opts)
   vim.keymap.set("n", "ga", vim.lsp.buf.code_action, keymap_opts)
   vim.keymap.set('n', '<space>f', function() vim.lsp.buf.format { async = true } end, bufopts)
+
+  vim.keymap.set('i', '{', '{<CR>}<Esc>O')
+  vim.keymap.set('i', '(', '( )<Esc>h')
 end
 
-nvim_lsp.rust_analyzer.setup({
-    on_attach=on_attach,
+local rt = require("rust-tools")
+
+rt.setup({
+  tools = {
+    inlay_hints = {
+      show_parameter_hints = false,
+    },
+  },
+  server = {
+    on_attach = on_attach,
     settings = {
-        ["rust-analyzer"] = {
-            imports = {
-                granularity = {
-                    group = "module",
-                },
-                prefix = "crate",
+      ["rust-analyzer"] = {
+        imports = {
+            granularity = {
+                group = "module",
             },
-      checkOnSave = {
-    command = "clippy"
-      },
-      inlayHints = {
-    parameterHints = {
-      enable = false,
-    }
-      },
-            cargo = {
-                buildScripts = {
-                    enable = true,
-                },
-            },
-            procMacro = {
-                enable = true
-            },
-        }
-    }
+            prefix = "crate",
+        },
+        checkOnSave = {
+          command = "clippy"
+        },
+        cargo = {
+          buildScripts = {
+            enable = true,
+          },
+        },
+        procMacro = {
+          enable = true
+        },
+      }
+    }	
+  }
 })
+
+--nvim_lsp.rust_analyzer.setup({
+--    on_attach=on_attach,
+--    settings = {
+--        ["rust-analyzer"] = {
+--            imports = {
+--                granularity = {
+--                    group = "module",
+--                },
+--                prefix = "crate",
+--            },
+--      checkOnSave = {
+--    command = "clippy"
+--      },
+--      inlayHints = {
+--    parameterHints = {
+--      enable = false,
+--    }
+--      },
+--            cargo = {
+--                buildScripts = {
+--                    enable = true,
+--                },
+--            },
+--            procMacro = {
+--                enable = true
+--            },
+--        }
+--    }
+--})
 
 -- Setup completion
 local cmp = require("cmp")
