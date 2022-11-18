@@ -18,8 +18,10 @@ vim.opt.tabstop = 2
 
 -- mappings
 vim.g.mapleader = ' '
+vim.keymap.set('n', '<Esc>', ':noh<cr>')
 vim.keymap.set('n', '<C-s>', ':w<cr>')
 vim.keymap.set('n', '<leader>c', ':bd<cr>')
+vim.keymap.set('i', '<C-s>', '<Esc>:w<cr>')
 vim.keymap.set('i', 'jj', '<Esc>')
 vim.keymap.set('i', 'AA', '<Esc>A')
 vim.keymap.set('i', 'II', '<Esc>I')
@@ -84,8 +86,8 @@ local on_attach = function(client)
   vim.keymap.set("n", "ga", vim.lsp.buf.code_action, keymap_opts)
   vim.keymap.set('n', '<space>f', function() vim.lsp.buf.format { async = true } end, bufopts)
 
-  vim.keymap.set('i', '{', '{<CR>}<Esc>O')
-  vim.keymap.set('i', '(', '( )<Esc>h')
+  vim.keymap.set('i', '{', '{}<Esc>i')
+  vim.keymap.set('i', '(', '()<Esc>i')
 end
 
 local rt = require("rust-tools")
