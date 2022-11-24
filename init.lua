@@ -21,17 +21,21 @@ vim.g.mapleader = ' '
 vim.keymap.set('n', '<Esc>', ':noh<cr>')
 vim.keymap.set('n', '<C-s>', ':w<cr>')
 vim.keymap.set('n', '<leader>c', ':bd<cr>')
+vim.keymap.set('n', '<leader>y', '"+y')
+vim.keymap.set('n', '<leader>p', '"+p')
 vim.keymap.set('i', '<C-s>', '<Esc>:w<cr>')
 vim.keymap.set('i', 'jj', '<Esc>')
 vim.keymap.set('i', 'AA', '<Esc>A')
 vim.keymap.set('i', 'II', '<Esc>I')
 
+-- Telescope mappings
 local builtin = require('telescope.builtin')
 vim.keymap.set('n', '<leader>ff', builtin.find_files, {})
 vim.keymap.set('n', '<leader>fg', builtin.live_grep, {})
 vim.keymap.set('n', '<leader>fb', builtin.buffers, {})
 vim.keymap.set('n', '<leader>fh', builtin.help_tags, {})
 
+vim.keymap.set('n', '<leader>fd', builtin.diagnostics, {})
 vim.keymap.set('n', '<leader>fs', builtin.lsp_document_symbols, {})
 vim.keymap.set('n', '<leader>fS', builtin.lsp_workspace_symbols, {})
 
