@@ -90,8 +90,8 @@ local on_attach = function(client)
   vim.keymap.set("n", "ga", vim.lsp.buf.code_action, keymap_opts)
   vim.keymap.set('n', '<space>f', function() vim.lsp.buf.format { async = true } end, bufopts)
 
-  vim.keymap.set('i', '{', '{}<Esc>i')
-  vim.keymap.set('i', '(', '()<Esc>i')
+  vim.keymap.set("n", "<leader>lc", "I//<Esc>", keymap_opts)
+  vim.keymap.set("v", "<leader>c", ":s@^@//@<cr><Esc>", keymap_opts)
 end
 
 local rt = require("rust-tools")
@@ -127,36 +127,6 @@ rt.setup({
     }	
   }
 })
-
---nvim_lsp.rust_analyzer.setup({
---    on_attach=on_attach,
---    settings = {
---        ["rust-analyzer"] = {
---            imports = {
---                granularity = {
---                    group = "module",
---                },
---                prefix = "crate",
---            },
---      checkOnSave = {
---    command = "clippy"
---      },
---      inlayHints = {
---    parameterHints = {
---      enable = false,
---    }
---      },
---            cargo = {
---                buildScripts = {
---                    enable = true,
---                },
---            },
---            procMacro = {
---                enable = true
---            },
---        }
---    }
---})
 
 -- Setup completion
 local cmp = require("cmp")
@@ -200,3 +170,14 @@ vim.api.nvim_create_autocmd("BufWritePre", {
   end,
   group = format_sync_grp,
 })
+
+
+require'nvim-treesitter.configs'.setup {
+  ensure_installed = { "rust" },
+  auto_install = true,
+  highlight = {
+    enable = true,
+    additional_vim_regex_highlighting = false,
+  }
+}
+
