@@ -1,6 +1,7 @@
--- disable netrw at the very start of your init.lua (strongly advised)
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
+
+vim.cmd([[ let g:neo_tree_remove_legacy_commands = 1 ]])
 
 require('plugins')
 
@@ -39,37 +40,15 @@ vim.keymap.set('n', '<leader>fd', builtin.diagnostics, {})
 vim.keymap.set('n', '<leader>fs', builtin.lsp_document_symbols, {})
 vim.keymap.set('n', '<leader>fS', builtin.lsp_workspace_symbols, {})
 
--- NvimTree config
--- set termguicolors to enable highlight groups
-vim.opt.termguicolors = true
-
-require("nvim-tree").setup({
-  sort_by = "case_sensitive",
-  hijack_cursor = true,
-  open_on_tab = true,
-  git = {
-    ignore = false,
-  },
-  update_focused_file = {
-    enable = true,
-  },
-  diagnostics = {
-    enable = true,
-  },
-  view = {
-    adaptive_size = true,
-    mappings = {
-      list = {
-        { key = "u", action = "dir_up" },
-      },
+-- Neotree config
+require('neo-tree').setup({
+  filesystem = {
+    filtered_items = {
+      visible = true,
     },
-  },
-  renderer = {
-    group_empty = true,
-  },
-  filters = {
-    dotfiles = false,
-  },
+    follow_current_file = true,
+    hijack_netrw_behavior = "open_default",
+  }
 })
 
 
