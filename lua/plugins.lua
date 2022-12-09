@@ -43,6 +43,10 @@ return require('packer').startup(function(use)
       "MunifTanjim/nui.nvim",
     }
   }
+  use {
+    'romgrk/barbar.nvim', 
+    requires = { 'nvim-web-devicons' }
+  }
   use 'nvim-treesitter/nvim-treesitter'
 
   -- Automatically set up your configuration after cloning packer.nvim
