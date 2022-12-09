@@ -5,7 +5,7 @@ vim.g.loaded_netrwPlugin = 1
 require('plugins')
 
 vim.opt.termguicolors = true
-vim.cmd[[colorscheme melange]]
+vim.cmd([[colorscheme melange]])
 
 vim.o.completeopt = 'menuone,noinsert,noselect'
 vim.opt.shortmess = vim.opt.shortmess + 'c'
@@ -173,7 +173,7 @@ vim.api.nvim_create_autocmd("BufWritePre", {
 
 
 require'nvim-treesitter.configs'.setup {
-  ensure_installed = { "rust" },
+  ensure_installed = { "rust", "vim", "lua" },
   auto_install = true,
   highlight = {
     enable = true,
