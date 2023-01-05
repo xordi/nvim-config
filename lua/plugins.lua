@@ -48,6 +48,18 @@ return require('packer').startup(function(use)
     requires = { 'nvim-web-devicons' }
   }
   use 'nvim-treesitter/nvim-treesitter'
+  use {
+    "folke/trouble.nvim",
+    requires = "kyazdani42/nvim-web-devicons",
+    config = function()
+      require("trouble").setup {
+        -- your configuration comes here
+        -- or leave it empty to use the default settings
+        -- refer to the configuration section below
+      }
+    end
+  }
+  use {"akinsho/toggleterm.nvim", tag = '*'}
 
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins
