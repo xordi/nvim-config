@@ -96,6 +96,33 @@ local on_attach = function(client)
   vim.keymap.set("v", "<leader>c", ":s@^@//@<cr><Esc>", keymap_opts)
 end
 
+--local nvim_lsp = require'lspconfig'
+--
+--nvim_lsp.rust_analyzer.setup({
+--    on_attach=on_attach,
+--    settings = {
+--        ["rust-analyzer"] = {
+--          imports = {
+--              granularity = {
+--                  group = "module",
+--              },
+--              prefix = "crate",
+--          },
+--          checkOnSave = {
+--            command = "clippy"
+--          },
+--          cargo = {
+--            buildScripts = {
+--              enable = true,
+--            },
+--          },
+--          procMacro = {
+--            enable = true
+--          },
+--        }
+--    }
+--})
+
 local rt = require("rust-tools")
 
 rt.setup({
@@ -126,7 +153,7 @@ rt.setup({
           enable = true
         },
       }
-    }	
+    } 
   }
 })
 
