@@ -28,6 +28,7 @@ vim.keymap.set('i', '<C-s>', '<Esc>:w<cr>')
 vim.keymap.set('i', 'jj', '<Esc>')
 vim.keymap.set('i', 'AA', '<Esc>A')
 vim.keymap.set('i', 'II', '<Esc>I')
+vim.keymap.set('n', '<leader>r', ':luafile ~/.config/nvim/init.lua<cr>')
 
 -- Telescope mappings
 local builtin = require('telescope.builtin')
