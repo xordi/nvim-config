@@ -63,7 +63,10 @@ return require('packer').startup(function(use)
   use { "windwp/nvim-spectre",
     requires = { "nvim-lua/plenary.nvim" }
   }
-
+  use {'akinsho/git-conflict.nvim', tag = "*", config = function()
+      require('git-conflict').setup()
+    end
+  }
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins
   if packer_bootstrap then
