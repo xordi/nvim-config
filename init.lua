@@ -94,41 +94,14 @@ local on_attach = function(client)
   vim.keymap.set("n", "gd", vim.lsp.buf.definition, keymap_opts)
   vim.keymap.set("n", "rn", vim.lsp.buf.rename, keymap_opts)
   vim.keymap.set("n", "ga", vim.lsp.buf.code_action, keymap_opts)
-  vim.keymap.set('n', '<space>f', function() vim.lsp.buf.format { async = true } end, bufopts)
+  vim.keymap.set('n', '<leader>cf', function() vim.lsp.buf.format { async = true } end, bufopts)
 
   vim.keymap.set("n", "<leader>lc", "I//<Esc>", keymap_opts)
   vim.keymap.set("v", "<leader>c", ":s@^@//@<cr><Esc>", keymap_opts)
 end
 
---local nvim_lsp = require'lspconfig'
---
---nvim_lsp.rust_analyzer.setup({
---    on_attach=on_attach,
---    settings = {
---        ["rust-analyzer"] = {
---          imports = {
---              granularity = {
---                  group = "module",
---              },
---              prefix = "crate",
---          },
---          checkOnSave = {
---            command = "clippy"
---          },
---          cargo = {
---            buildScripts = {
---              enable = true,
---            },
---          },
---          procMacro = {
---            enable = true
---          },
---        }
---    }
---})
-
+-- Rust LSP configuration
 local rt = require("rust-tools")
-
 rt.setup({
   tools = {
     inlay_hints = {
@@ -160,6 +133,14 @@ rt.setup({
     } 
   }
 })
+
+-- Elixir LSP configuration
+local capabilities = require('cmp_nvim_lsp').default_capabilities()
+nvim_lsp.elixirls.setup{
+    cmd = { "/home/xordi/elixir-ls/language_server.sh" },
+    on_attach = on_attach,
+    capabilities = capabilities,
+}
 
 -- Setup completion
 local cmp = require("cmp")
@@ -197,7 +178,7 @@ cmp.setup({
 
 -- format on save
 vim.api.nvim_create_autocmd("BufWritePre", {
-  pattern = "*.rs",
+  pattern = { "*.rs", "*.ex", "*.exs" },
   callback = function()
    vim.lsp.buf.format(nil, 200)
   end,
@@ -206,7 +187,7 @@ vim.api.nvim_create_autocmd("BufWritePre", {
 
 
 require'nvim-treesitter.configs'.setup {
-  ensure_installed = { "rust", "vim", "lua" },
+  ensure_installed = { "rust", "vim", "lua", "elixir", "heex", "eex" },
   auto_install = true,
   highlight = {
     enable = true,
