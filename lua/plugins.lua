@@ -34,6 +34,8 @@ return require('packer').startup(function(use)
   'nvim-telescope/telescope.nvim', tag = '0.1.0', requires = { {'nvim-lua/plenary.nvim'} }
   }
   use "savq/melange"
+  use 'shaunsingh/nord.nvim'
+  use 'folke/tokyonight.nvim'
   use {
     "nvim-neo-tree/neo-tree.nvim",
     branch = "v2.x",

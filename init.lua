@@ -6,7 +6,7 @@ vim.cmd([[ let g:neo_tree_remove_legacy_commands = 1 ]])
 require('plugins')
 
 vim.opt.termguicolors = true
-vim.cmd([[colorscheme melange]])
+vim.cmd([[colorscheme tokyonight-moon]])
 
 vim.o.completeopt = 'menuone,noinsert,noselect'
 vim.opt.shortmess = vim.opt.shortmess + 'c'
@@ -25,6 +25,9 @@ vim.keymap.set('n', '<C-s>', ':w<cr>')
 vim.keymap.set('n', '<leader>c', ':bd<cr>')
 vim.keymap.set('n', '<leader>y', '"+y')
 vim.keymap.set('n', '<leader>p', '"+p')
+vim.keymap.set('v', '<leader>y', '"+y')
+vim.keymap.set('v', '<leader>p', '"+p')
+vim.keymap.set('i', '<C-s>', '<Esc>:w<cr>')
 vim.keymap.set('i', '<C-s>', '<Esc>:w<cr>')
 vim.keymap.set('i', 'jj', '<Esc>')
 vim.keymap.set('i', 'AA', '<Esc>A')
