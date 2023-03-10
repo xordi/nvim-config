@@ -110,6 +110,7 @@ rt.setup({
   tools = {
     inlay_hints = {
       show_parameter_hints = false,
+      highlight = "ModeMsg",
     },
   },
   server = {
@@ -144,6 +145,13 @@ nvim_lsp.elixirls.setup{
     cmd = { "/home/xordi/elixir-ls/language_server.sh" },
     on_attach = on_attach,
     capabilities = capabilities,
+}
+
+-- HTML LSP configuration
+capabilities.textDocument.completion.completionItem.snippetSupport = true
+nvim_lsp.html.setup {
+  capabilities = capabilities,
+  filetypes = { "html", "heex" }
 }
 
 -- Setup completion
