@@ -98,7 +98,6 @@ local on_attach = function(client)
   vim.keymap.set("n", "gi", vim.lsp.buf.implementation, keymap_opts)
   vim.keymap.set("n", "rn", vim.lsp.buf.rename, keymap_opts)
   vim.keymap.set("n", "ga", vim.lsp.buf.code_action, keymap_opts)
-  vim.keymap.set('n', '<leader>cf', function() vim.lsp.buf.format { async = true } end, bufopts)
 
   vim.keymap.set("n", "<leader>lc", "I//<Esc>", keymap_opts)
   vim.keymap.set("v", "<leader>c", ":s@^@//@<cr><Esc>", keymap_opts)
@@ -190,7 +189,7 @@ cmp.setup({
 
 -- format on save
 vim.api.nvim_create_autocmd("BufWritePre", {
-  pattern = { "*.rs", "*.ex", "*.exs" },
+  pattern = { "*.rs" },
   callback = function()
    vim.lsp.buf.format(nil, 200)
   end,
