@@ -4,11 +4,11 @@ vim.g.loaded_netrwPlugin = 1
 vim.cmd([[ let g:neo_tree_remove_legacy_commands = 1 ]])
 
 require('plugins')
+require('keymaps')
 
 vim.opt.termguicolors = true
 vim.cmd([[colorscheme tokyonight-moon]])
 
-vim.o.completeopt = 'menuone,noinsert,noselect'
 vim.opt.shortmess = vim.opt.shortmess + 'c'
 
 vim.opt.number = true
@@ -18,58 +18,6 @@ vim.opt.shiftwidth = 2
 vim.opt.tabstop = 2
 vim.opt.autowriteall = true
 
--- mappings
-vim.g.mapleader = ' '
-vim.keymap.set('n', '<Esc>', ':noh<cr>')
-vim.keymap.set('n', '<C-s>', ':w<cr>')
-vim.keymap.set('n', '<leader>c', ':bd<cr>')
-vim.keymap.set('n', '<leader>y', '"+y')
-vim.keymap.set('n', '<leader>p', '"+p')
-vim.keymap.set('v', '<leader>y', '"+y')
-vim.keymap.set('v', '<leader>p', '"+p')
-vim.keymap.set('i', '<C-s>', '<Esc>:w<cr>')
-vim.keymap.set('i', '<C-s>', '<Esc>:w<cr>')
-vim.keymap.set('i', 'jj', '<Esc>')
-vim.keymap.set('i', 'AA', '<Esc>A')
-vim.keymap.set('i', 'II', '<Esc>I')
-vim.keymap.set('n', '<leader>r', ':luafile ~/.config/nvim/init.lua<cr>')
-vim.keymap.set('n', '<leader>gc', ':GitConflictListQf<cr>')
-
--- Telescope mappings
-local builtin = require('telescope.builtin')
-vim.keymap.set('n', '<leader>ff', builtin.find_files, {})
-vim.keymap.set('n', '<leader>fg', builtin.live_grep, {})
-vim.keymap.set('n', '<leader>fb', builtin.buffers, {})
-vim.keymap.set('n', '<leader>fh', builtin.help_tags, {})
-
-vim.keymap.set('n', '<leader>fs', builtin.lsp_document_symbols, {})
-vim.keymap.set('n', '<leader>fS', builtin.lsp_workspace_symbols, {})
-
--- Trouble mappings
-vim.keymap.set("n", "<leader>xx", "<cmd>TroubleToggle<cr>",
-  {silent = true, noremap = true}
-)
-vim.keymap.set("n", "<leader>xw", "<cmd>TroubleToggle workspace_diagnostics<cr>",
-  {silent = true, noremap = true}
-)
-vim.keymap.set("n", "<leader>xd", "<cmd>TroubleToggle document_diagnostics<cr>",
-  {silent = true, noremap = true}
-)
-vim.keymap.set("n", "<leader>xl", "<cmd>TroubleToggle loclist<cr>",
-  {silent = true, noremap = true}
-)
-vim.keymap.set("n", "<leader>xq", "<cmd>TroubleToggle quickfix<cr>",
-  {silent = true, noremap = true}
-)
-vim.keymap.set("n", "gR", "<cmd>TroubleToggle lsp_references<cr>",
-  {silent = true, noremap = true}
-)
-
--- Spectre mappings
-vim.keymap.set("n","<leader>S", "<cmd>lua require('spectre').open()<CR>", { noremap = true})
-vim.keymap.set("n","<leader>sw", "<cmd>lua require('spectre').open_visual({select_word=true})<CR>", { noremap = true})
-vim.keymap.set("v","<leader>s", "<esc>:lua require('spectre').open_visual()<CR>", { noremap = true})
-vim.keymap.set("n","<leader>sp", "viw:lua require('spectre').open_file_search()<CR>", { noremap = true})
 
 -- Neotree config
 require('neo-tree').setup({
@@ -151,6 +99,21 @@ capabilities.textDocument.completion.completionItem.snippetSupport = true
 nvim_lsp.html.setup {
   capabilities = capabilities,
   filetypes = { "html", "heex" }
+}
+
+nvim_lsp.lua_ls.setup {
+  settings = {
+    Lua = {
+      workspace = {
+        checkThirdParty = false,
+        -- Make the server aware of Neovim runtime files
+        library = vim.api.nvim_get_runtime_file("", true),
+      },
+      completion = {
+        callSnippet = "Replace",
+      },
+    },
+  },
 }
 
 -- Setup completion

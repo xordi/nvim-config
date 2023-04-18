@@ -69,6 +69,40 @@ return require('packer').startup(function(use)
       require('git-conflict').setup()
     end
   }
+  use {
+      "williamboman/mason.nvim",
+      run = ":MasonUpdate", -- :MasonUpdate updates registry contents
+      config = function()
+        require("mason").setup()
+      end
+  }
+
+  use {
+    "williamboman/mason-lspconfig.nvim",
+    requires = {
+      "williamboman/mason.nvim",
+      "neovim/nvim-lspconfig"
+    },
+    config = function()
+      require("mason-lspconfig").setup {
+          ensure_installed = { "lua_ls", "rust_analyzer" },
+      }
+    end
+  }
+  use {
+    'echasnovski/mini.bufremove',
+    branch = 'stable',
+    config = function()
+      require("mini.bufremove").setup()
+    end
+  }
+  use {
+    'echasnovski/mini.pairs',
+    branch = 'stable',
+    config = function()
+      require("mini.pairs").setup()
+    end
+  }
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins
   if packer_bootstrap then
