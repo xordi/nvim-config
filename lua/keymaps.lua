@@ -23,6 +23,10 @@ vim.keymap.set('n', '<leader>fh', builtin.help_tags, {})
 
 vim.keymap.set('n', '<leader>ss', builtin.lsp_document_symbols, {})
 vim.keymap.set('n', '<leader>sS', builtin.lsp_workspace_symbols, {})
+vim.keymap.set('n', '<leader>gi', builtin.lsp_implementations, {})
+vim.keymap.set('n', '<leader>gd', builtin.lsp_definitions, {})
+vim.keymap.set('n', '<leader>gD', builtin.lsp_type_definitions, {})
+vim.keymap.set('n', '<leader>gr', builtin.lsp_references, {})
 
 -- Trouble mappings
 vim.keymap.set("n", "<leader>xx", "<cmd>TroubleToggle<cr>",
