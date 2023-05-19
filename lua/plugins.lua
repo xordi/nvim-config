@@ -70,6 +70,7 @@ return require('packer').startup(function(use)
       require('git-conflict').setup()
     end
   }
+
   use {
       "williamboman/mason.nvim",
       run = ":MasonUpdate", -- :MasonUpdate updates registry contents
@@ -83,6 +84,10 @@ return require('packer').startup(function(use)
     requires = {
       "williamboman/mason.nvim",
       "neovim/nvim-lspconfig"
+    },
+    after = {
+      "nvim-lspconfig",
+      "mason.nvim",
     },
     config = function()
       require("mason-lspconfig").setup {
