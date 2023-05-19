@@ -58,3 +58,9 @@ vim.keymap.set("n","<leader>sp", "viw:lua require('spectre').open_file_search()<
 -- Mini for intelligent buffer removal
 vim.keymap.set("n", "<leader>bd", function() require("mini.bufremove").delete(0, false) end)
 vim.keymap.set("n", "<leader>bD", function() require("mini.bufremove").delete(0, true) end)
+
+-- Barbar mappings
+vim.keymap.set("n", "<leader>bl", "<cmd>BufferCloseBuffersLeft<CR>", { noremap = true })
+vim.keymap.set("n", "<leader>br", "<cmd>BufferCloseBuffersRight<CR>", { noremap = true })
+vim.keymap.set("n", "<leader>ba", "<cmd>BufferCloseAllButCurrentOrPinned<CR>", { noremap = true })
+vim.keymap.set("n", "<leader>bk", "<cmd>BufferPick<CR>", { noremap = true })
