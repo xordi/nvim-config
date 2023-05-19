@@ -7,7 +7,7 @@ require('plugins')
 require('keymaps')
 
 vim.opt.termguicolors = true
-vim.cmd([[colorscheme tokyonight-moon]])
+vim.cmd([[colorscheme everforest]])
 
 vim.opt.shortmess = vim.opt.shortmess + 'c'
 

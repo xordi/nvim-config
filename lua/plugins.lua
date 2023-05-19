@@ -36,6 +36,7 @@ return require('packer').startup(function(use)
   use "savq/melange"
   use 'shaunsingh/nord.nvim'
   use 'folke/tokyonight.nvim'
+  use 'sainnhe/everforest'
   use {
     "nvim-neo-tree/neo-tree.nvim",
     branch = "v2.x",
@@ -102,6 +103,25 @@ return require('packer').startup(function(use)
     branch = 'stable',
     config = function()
       require("mini.pairs").setup()
+    end
+  }
+  use {
+    'ggandor/leap.nvim',
+    requires = {
+      "tpope/vim-repeat"
+    },
+    config = function ()
+      require("leap").add_default_mappings()
+    end
+  }
+  use {
+    "ggandor/flit.nvim",
+    requires = {
+      "ggandor/leap.nvim",
+      "tpope/vim-repeat",
+    },
+    config = function ()
+      require("flit").setup {}
     end
   }
   -- Automatically set up your configuration after cloning packer.nvim
