@@ -153,9 +153,16 @@ vim.api.nvim_create_autocmd("BufWritePre", {
   group = format_sync_grp,
 })
 
+-- format on save when not using LSP
+vim.api.nvim_create_autocmd("BufWritePost", {
+  pattern = { "*" },
+  command = "FormatWrite",
+  group = FormatAutoGroup,
+})
+
 
 require'nvim-treesitter.configs'.setup {
-  ensure_installed = { "rust", "vim", "lua", "elixir", "heex", "eex" },
+  ensure_installed = { "rust", "vim", "lua", "elixir", "heex", "eex", "yaml", "json"},
   auto_install = true,
   highlight = {
     enable = true,

@@ -129,6 +129,40 @@ return require('packer').startup(function(use)
       require("flit").setup {}
     end
   }
+  use {
+    "mhartington/formatter.nvim",
+    config = function ()
+     require("formatter").setup {
+       logging = true,
+       log_level = vim.log.levels.WARN,
+       filetype = {
+         sql = {
+           function ()
+             return {
+               exe = "sql-formatter",
+               args = {
+                 "-l",
+                 "postgresql"
+               },
+               stdin = true,
+             }
+           end
+         },
+        yaml = {
+           function ()
+             return {
+               exe = "yamlfmt",
+               args = {
+                 "-in",
+               },
+               stdin = true,
+             }
+           end
+        }
+       }
+     }
+    end
+  }
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins
   if packer_bootstrap then

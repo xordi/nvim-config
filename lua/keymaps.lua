@@ -13,6 +13,8 @@ vim.keymap.set('i', 'AA', '<Esc>A')
 vim.keymap.set('i', 'II', '<Esc>I')
 vim.keymap.set('n', '<leader>r', ':luafile ~/.config/nvim/init.lua<cr>')
 vim.keymap.set('n', '<leader>gc', ':GitConflictListQf<cr>')
+vim.keymap.set('n', '<leader>f', ':Format')
+vim.keymap.set('n', '<leader>F', ':FormatWrite')
 
 -- Telescope mappings
 local builtin = require('telescope.builtin')
