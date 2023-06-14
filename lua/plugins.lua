@@ -158,6 +158,9 @@ return require('packer').startup(function(use)
                stdin = true,
              }
            end
+        },
+        graphql = {
+          require("formatter.filetypes.graphql").prettierd,
         }
        }
      }
