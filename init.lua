@@ -45,7 +45,6 @@ local on_attach = function(client)
   vim.keymap.set("v", "<leader>c", ":s@^@//@<cr><Esc>", keymap_opts)
 end
 
--- Rust LSP configuration
 local rt = require("rust-tools")
 rt.setup({
   tools = {
