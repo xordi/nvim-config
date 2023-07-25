@@ -16,8 +16,8 @@ vim.opt.relativenumber = true
 vim.opt.expandtab = true
 vim.opt.shiftwidth = 2
 vim.opt.tabstop = 2
+vim.opt.autowrite = true
 vim.opt.autowriteall = true
-
 
 -- Neotree config
 require('neo-tree').setup({
@@ -168,4 +168,3 @@ require'nvim-treesitter.configs'.setup {
     additional_vim_regex_highlighting = false,
   }
 }
-
