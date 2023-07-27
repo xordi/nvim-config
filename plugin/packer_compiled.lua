@@ -256,10 +256,6 @@ _G.packer_plugins = {
 }
 
 time([[Defining packer_plugins]], false)
--- Config for: mini.bufremove
-time([[Config for mini.bufremove]], true)
-try_loadstring("\27LJ\2\n<\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\19mini.bufremove\frequire\0", "config", "mini.bufremove")
-time([[Config for mini.bufremove]], false)
 -- Config for: formatter.nvim
 time([[Config for formatter.nvim]], true)
 try_loadstring("\27LJ\2\nJ\0\0\2\0\3\0\0045\0\0\0005\1\1\0=\1\2\0L\0\2\0\targs\1\3\0\0\a-l\15postgresql\1\0\2\nstdin\2\bexe\18sql-formatter:\0\0\2\0\3\0\0045\0\0\0005\1\1\0=\1\2\0L\0\2\0\targs\1\2\0\0\b-in\1\0\2\nstdin\2\bexe\fyamlfmt‚\2\1\0\b\0\18\0\0296\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\3\0006\3\4\0009\3\5\0039\3\6\0039\3\a\3=\3\b\0025\3\n\0004\4\3\0003\5\t\0>\5\1\4=\4\v\0034\4\3\0003\5\f\0>\5\1\4=\4\r\0034\4\3\0006\5\0\0'\a\14\0B\5\2\0029\5\15\5>\5\1\4=\4\16\3=\3\17\2B\0\2\1K\0\1\0\rfiletype\fgraphql\14prettierd formatter.filetypes.graphql\tyaml\0\bsql\1\0\0\0\14log_level\tWARN\vlevels\blog\bvim\1\0\1\flogging\2\nsetup\14formatter\frequire\0", "config", "formatter.nvim")
@@ -292,6 +288,10 @@ time([[Config for trouble.nvim]], false)
 time([[Config for flit.nvim]], true)
 try_loadstring("\27LJ\2\n6\0\0\3\0\3\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0004\2\0\0B\0\2\1K\0\1\0\nsetup\tflit\frequire\0", "config", "flit.nvim")
 time([[Config for flit.nvim]], false)
+-- Config for: mini.bufremove
+time([[Config for mini.bufremove]], true)
+try_loadstring("\27LJ\2\n<\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\19mini.bufremove\frequire\0", "config", "mini.bufremove")
+time([[Config for mini.bufremove]], false)
 -- Load plugins in order defined by `after`
 time([[Sequenced loading]], true)
 vim.cmd [[ packadd nvim-lspconfig ]]
