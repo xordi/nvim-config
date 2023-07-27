@@ -24,6 +24,18 @@ vim.keymap.set('n', '}', '}zz', { noremap = true })
 vim.keymap.set('n', '<C-d>', '<C-d>zz', { noremap = true })
 vim.keymap.set('n', '<C-u>', '<C-u>zz', { noremap = true })
 
+-- completion keymaps
+local ls = require('luasnip')
+vim.keymap.set({"i"}, "<Tab>", function() ls.expand() end, {silent = true})
+vim.keymap.set({"i", "s"}, "<Tab>", function() ls.jump( 1) end, {silent = true})
+vim.keymap.set({"i", "s"}, "<S-Tab>", function() ls.jump(-1) end, {silent = true})
+
+vim.keymap.set({"i", "s"}, "<C-E>", function()
+	if ls.choice_active() then
+		ls.change_choice(1)
+	end
+end, {silent = true})
+
 -- Telescope mappings
 local builtin = require('telescope.builtin')
 vim.keymap.set('n', '<leader>f', builtin.find_files, { desc = 'Find files'})

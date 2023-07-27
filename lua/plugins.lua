@@ -22,14 +22,20 @@ return require('packer').startup(function(use)
     -- cmp LSP completion
     "hrsh7th/cmp-nvim-lsp",
     -- cmp Snippet completion
-    "hrsh7th/cmp-vsnip",
+    'saadparwaiz1/cmp_luasnip',
     -- cmp Path completion
     "hrsh7th/cmp-path",
     "hrsh7th/cmp-buffer",
+    {
+      "L3MON4D3/LuaSnip",
+      -- follow latest release.
+      tag = "v2.*", -- Replace <CurrentMajor> by the latest released major (first number of latest release)
+      -- install jsregexp (optional!:).
+      run = "make install_jsregexp"
+    },
     after = { "hrsh7th/nvim-cmp" },
     requires = { "hrsh7th/nvim-cmp" },
   })
-  use('hrsh7th/vim-vsnip')
   use{
   'nvim-telescope/telescope.nvim', tag = '0.1.0', requires = { {'nvim-lua/plenary.nvim'} }
   }

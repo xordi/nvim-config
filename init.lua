@@ -116,7 +116,7 @@ cmp.setup({
   preselect = cmp.PreselectMode.None,
   snippet = {
     expand = function(args)
-      vim.fn["vsnip#anonymous"](args.body)
+      require('luasnip').lsp_expand(args.body)
     end,
   },
   mapping = {
@@ -138,7 +138,7 @@ cmp.setup({
   -- Installed sources
   sources = {
     { name = "nvim_lsp" },
-    { name = "vsnip" },
+    { name = "luasnip" },
     { name = "path" },
     { name = "buffer" },
   },
