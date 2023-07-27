@@ -18,6 +18,12 @@ vim.keymap.set('i', 'II', '<Esc>I')
 vim.keymap.set('n', '<leader>r', ':luafile ~/.config/nvim/init.lua<cr>', { desc = 'Reload config'})
 vim.keymap.set('n', '<leader>gc', ':GitConflictListQf<cr>', { desc = 'Quick find git conflicts'})
 
+-- centering cursor in screen when moving fast vertically
+vim.keymap.set('n', '{', '{zz', { noremap = true })
+vim.keymap.set('n', '}', '}zz', { noremap = true })
+vim.keymap.set('n', '<C-d>', '<C-d>zz', { noremap = true })
+vim.keymap.set('n', '<C-u>', '<C-u>zz', { noremap = true })
+
 -- Telescope mappings
 local builtin = require('telescope.builtin')
 vim.keymap.set('n', '<leader>f', builtin.find_files, { desc = 'Find files'})
