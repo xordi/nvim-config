@@ -5,6 +5,7 @@ vim.cmd([[ let g:neo_tree_remove_legacy_commands = 1 ]])
 
 require('plugins')
 require('keymaps')
+require('treesitter')
 
 vim.opt.termguicolors = true
 vim.cmd([[colorscheme everforest]])
@@ -111,6 +112,12 @@ nvim_lsp.lua_ls.setup {
   },
 }
 
+-- F# LSP configuration
+require'lspconfig'.fsautocomplete.setup{
+  on_attach = on_attach,
+  capabilities = capabilities,
+}
+
 -- Setup completion
 local cmp = require("cmp")
 local luasnip = require("luasnip")
@@ -167,7 +174,7 @@ cmp.setup({
 
 -- format on save
 vim.api.nvim_create_autocmd("BufWritePre", {
-  pattern = { "*.rs" },
+  pattern = { "*.rs", "*.fs" },
   callback = function()
    vim.lsp.buf.format(nil, 200)
   end,
@@ -197,13 +204,3 @@ vim.api.nvim_create_autocmd("BufWritePost", {
   command = "FormatWrite",
   group = FormatAutoGroup,
 })
-
-
-require'nvim-treesitter.configs'.setup {
-  ensure_installed = { "rust", "vim", "lua", "elixir", "heex", "eex", "yaml", "json"},
-  auto_install = true,
-  highlight = {
-    enable = true,
-    additional_vim_regex_highlighting = false,
-  }
-}
