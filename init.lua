@@ -18,6 +18,7 @@ vim.opt.shiftwidth = 2
 vim.opt.tabstop = 2
 vim.opt.autowrite = true
 vim.opt.autowriteall = true
+vim.opt.updatetime = 100
 
 -- Neotree config
 require('neo-tree').setup({
@@ -171,6 +172,23 @@ vim.api.nvim_create_autocmd("BufWritePre", {
    vim.lsp.buf.format(nil, 200)
   end,
   group = format_sync_grp,
+})
+
+-- format on save needed for elixir, given that elixir-ls doesn't handle formatting very well...
+vim.api.nvim_create_autocmd("BufWritePost", {
+  pattern = { "*.ex", "*.exs" },
+  callback = function ()
+    vim.fn.system({"mix", "format"})
+  end,
+  group = format_sync_grp,
+})
+
+vim.api.nvim_create_autocmd({"CursorHold", "BufEnter"}, {
+  pattern = { "*" },
+  callback = function ()
+    vim.cmd("checktime")
+  end,
+  group = vim.api.nvim_create_augroup("ReloadOnChange", { clear = true }),
 })
 
 -- format on save when not using LSP
