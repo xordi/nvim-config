@@ -40,7 +40,7 @@ local on_attach = function(client)
   local keymap_opts = { buffer = buffer }
   -- Code navigation and shortcuts
   vim.keymap.set("n", "K", vim.lsp.buf.hover, keymap_opts)
-  vim.keymap.set("n", "<c-k>", vim.lsp.buf.signature_help, keymap_opts)
+  vim.keymap.set("n", "<A-K>", vim.lsp.buf.signature_help, keymap_opts)
   vim.keymap.set("n", "rn", vim.lsp.buf.rename, keymap_opts)
   vim.keymap.set("n", "ga", vim.lsp.buf.code_action, keymap_opts)
 
