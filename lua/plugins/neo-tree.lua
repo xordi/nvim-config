@@ -2,6 +2,9 @@ return {
   "nvim-neo-tree/neo-tree.nvim",
   branch = "v2.x",
   cmd = "Neotree",
+  keys = {
+    { "<leader>nt", "<cmd>Neotree toggle<cr>", desc = "Toggle Neotree" }
+  },
   dependencies = {
     "nvim-lua/plenary.nvim",
     "nvim-tree/nvim-web-devicons", -- not strictly required, but recommended
