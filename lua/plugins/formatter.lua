@@ -2,6 +2,7 @@ return {
   "mhartington/formatter.nvim",
   ft = { "yaml", "sql", "graphql" },
   opts = function()
+    local mason_bin = vim.fn.stdpath("data") .. "/mason/bin"
     return {
       logging = true,
       log_level = vim.log.levels.WARN,
@@ -9,7 +10,7 @@ return {
         sql = {
           function()
             return {
-              exe = "sql-formatter",
+              exe = mason_bin .. "/sql-formatter",
               args = {
                 "-l",
                 "postgresql"
@@ -21,7 +22,7 @@ return {
         yaml = {
           function()
             return {
-              exe = "yamlfmt",
+              exe = mason_bin .. "/yamlfmt",
               args = {
                 "-in",
               },
@@ -34,5 +35,17 @@ return {
         }
       }
     }
+  end,
+  config = function(_, opts)
+    local formatter = require("formatter")
+
+    -- format on save when not using LSP
+    vim.api.nvim_create_autocmd("BufWritePost", {
+      pattern = { "*" },
+      command = "FormatWrite",
+      group = FormatAutoGroup,
+    })
+
+    formatter.setup(opts)
   end
 }

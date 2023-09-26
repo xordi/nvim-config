@@ -50,10 +50,3 @@ vim.api.nvim_create_autocmd({ "CursorHold", "BufEnter" }, {
   end,
   group = vim.api.nvim_create_augroup("ReloadOnChange", { clear = true }),
 })
-
--- format on save when not using LSP
---vim.api.nvim_create_autocmd("BufWritePost", {
---  pattern = { "*" },
---  command = "FormatWrite",
---  group = FormatAutoGroup,
---})
