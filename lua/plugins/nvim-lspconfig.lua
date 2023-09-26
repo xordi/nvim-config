@@ -52,6 +52,12 @@ return {
       capabilities = capabilities,
     })
 
+    -- Json LS
+    nvim_lsp.jsonls.setup({
+      on_attach = on_attach,
+      capabilities = capabilities,
+    })
+
     -- format on save
     vim.api.nvim_create_autocmd("BufWritePre", {
       pattern = { "*.rs", "*.fs", "*.lua" },
