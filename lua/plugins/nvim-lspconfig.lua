@@ -10,15 +10,30 @@ return {
     local capabilities = require("cmp_nvim_lsp").default_capabilities()
     local nvim_lsp = require("lspconfig")
 
+    local on_attach = function(_, bufnr)
+      local keymap_opts = { buffer = bufnr }
+      vim.keymap.set("n", "K", vim.lsp.buf.hover, keymap_opts)
+      vim.keymap.set("n", "<A-K>", vim.lsp.buf.signature_help, keymap_opts)
+      vim.keymap.set("n", "rn", vim.lsp.buf.rename, keymap_opts)
+      vim.keymap.set("n", "ga", vim.lsp.buf.code_action, keymap_opts)
+
+      vim.keymap.set("n", "<leader>lc", "I//<Esc>", keymap_opts)
+      vim.keymap.set("v", "<leader>c", ":s@^@//@<cr><Esc>", keymap_opts)
+    end
+
     -- Elixir LS
     nvim_lsp.elixirls.setup({
       on_attach = on_attach,
       capabilities = capabilities,
     })
 
+    -- Lua LS
     nvim_lsp.lua_ls.setup({
+      on_attach = on_attach,
+      capabilities = capabilities,
       settings = {
         Lua = {
+          globals = { "vim" },
           workspace = {
             checkThirdParty = false,
             -- Make the server aware of Neovim runtime files
@@ -31,24 +46,10 @@ return {
       },
     })
 
-    -- Map these keymaps on attaching LSP to a buffer
-    vim.api.nvim_create_autocmd('LspAttach', {
-      group = vim.api.nvim_create_augroup('UserLspConfig', {}),
-      callback = function(ev)
-        -- Enable completion triggered by <c-x><c-o>
-        vim.bo[ev.buf].omnifunc = 'v:lua.vim.lsp.omnifunc'
-
-        -- Buffer local mappings.
-        -- See `:help vim.lsp.*` for documentation on any of the below functions
-        local keymap_opts = { buffer = ev.buf }
-        vim.keymap.set("n", "K", vim.lsp.buf.hover, keymap_opts)
-        vim.keymap.set("n", "<A-K>", vim.lsp.buf.signature_help, keymap_opts)
-        vim.keymap.set("n", "rn", vim.lsp.buf.rename, keymap_opts)
-        vim.keymap.set("n", "ga", vim.lsp.buf.code_action, keymap_opts)
-
-        vim.keymap.set("n", "<leader>lc", "I//<Esc>", keymap_opts)
-        vim.keymap.set("v", "<leader>c", ":s@^@//@<cr><Esc>", keymap_opts)
-      end,
+    -- Rust LS
+    nvim_lsp.rust_analyzer.setup({
+      on_attach = on_attach,
+      capabilities = capabilities,
     })
 
     -- format on save
