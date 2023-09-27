@@ -24,7 +24,7 @@ return {
 
     -- Elixir LS
     nvim_lsp.elixirls.setup({
-      cmd = mason_bin .. "/elixir-ls",
+      cmd = { mason_bin .. "/elixir-ls" },
       on_attach = on_attach,
       capabilities = capabilities,
     })
