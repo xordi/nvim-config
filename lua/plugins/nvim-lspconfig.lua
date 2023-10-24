@@ -52,6 +52,32 @@ return {
     nvim_lsp.rust_analyzer.setup({
       on_attach = on_attach,
       capabilities = capabilities,
+      settings = {
+        ["rust-analyzer"] = {
+          imports = {
+            granularity = {
+              group = "module",
+            },
+            prefix = "crate",
+          },
+          checkOnSave = {
+            command = "clippy"
+          },
+          cargo = {
+            buildScripts = {
+              enable = true,
+            },
+          },
+          procMacro = {
+            enable = true
+          },
+          inlayHints = {
+            parameterHints = {
+              enable = false
+            }
+          }
+        }
+      }
     })
 
     -- Json LS
