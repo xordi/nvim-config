@@ -74,6 +74,9 @@ return {
           inlayHints = {
             parameterHints = {
               enable = false
+            },
+            closingBraceHints = {
+              enable = false
             }
           }
         }
