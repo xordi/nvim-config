@@ -45,31 +45,31 @@ vim.keymap.set('n', 'n', 'nzz', { noremap = true })
 vim.keymap.set('n', 'N', 'Nzz', { noremap = true })
 
 -- surroundings
-vim.keymap.set('n', 'm"', 'ciw""<Esc>P',
+vim.keymap.set('n', '<A-w>"', 'ciw""<Esc>P',
   { noremap = true, silent = true, desc = "Sorrund word under cursor with double quotes" })
-vim.keymap.set('n', 'm(', 'ciw()<Esc>P',
+vim.keymap.set('n', '<A-w>(', 'ciw()<Esc>P',
   { noremap = true, silent = true, desc = "Surrond word under cursor with parenthesis" })
-vim.keymap.set('n', 'm[', 'ciw[]<Esc>P',
+vim.keymap.set('n', '<A-w>[', 'ciw[]<Esc>P',
   { noremap = true, silent = true, desc = "Surround word under cursor with square brackets" })
-vim.keymap.set('n', 'm{', 'ciw{}<Esc>P',
+vim.keymap.set('n', '<A-w>{', 'ciw{}<Esc>P',
   { noremap = true, silent = true, desc = "Surround word under cursor with brackets" })
-vim.keymap.set('n', "m'", "ciw''<Esc>P",
+vim.keymap.set('n', "<A-w>'", "ciw''<Esc>P",
   { noremap = true, silent = true, desc = "Surround word under cursor with single quotes" })
-vim.keymap.set('n', 'm<', 'ciw<><Esc>P',
+vim.keymap.set('n', '<A-w><', 'ciw<><Esc>P',
   { noremap = true, silent = true, desc = "Surround word under cursor between less-greater" })
 
 
-vim.keymap.set('v', 'm"', 'c""<Esc>P',
+vim.keymap.set('v', '<A-w>"', 'c""<Esc>P',
   { noremap = true, silent = true, desc = "Sorrund word under cursor with double quotes" })
-vim.keymap.set('v', 'm(', 'c()<Esc>P',
+vim.keymap.set('v', '<A-w>(', 'c()<Esc>P',
   { noremap = true, silent = true, desc = "Surrond word under cursor with parenthesis" })
-vim.keymap.set('v', 'm[', 'c[]<Esc>P',
+vim.keymap.set('v', '<A-w>[', 'c[]<Esc>P',
   { noremap = true, silent = true, desc = "Surround word under cursor with square brackets" })
-vim.keymap.set('v', 'm{', 'c{}<Esc>P',
+vim.keymap.set('v', '<A-w>{', 'c{}<Esc>P',
   { noremap = true, silent = true, desc = "Surround word under cursor with brackets" })
-vim.keymap.set('v', "m'", "c''<Esc>P",
+vim.keymap.set('v', "<A-w>'", "c''<Esc>P",
   { noremap = true, silent = true, desc = "Surround word under cursor with single quotes" })
-vim.keymap.set('v', 'm<', 'c<><Esc>P',
+vim.keymap.set('v', '<A-w><', 'c<><Esc>P',
   { noremap = true, silent = true, desc = "Surround word under cursor between less-greater" })
 
 vim.api.nvim_create_autocmd({ "CursorHold", "BufEnter" }, {
