@@ -89,7 +89,14 @@ return {
       capabilities = capabilities,
     })
 
+    -- HTML LS
     nvim_lsp.html.setup({
+      on_attach = on_attach,
+      capabilities = capabilities,
+    })
+
+    -- Python LS
+    nvim_lsp.pylsp.setup({
       on_attach = on_attach,
       capabilities = capabilities,
     })
